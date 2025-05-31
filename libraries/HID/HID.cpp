@@ -27,6 +27,7 @@ int HID_::SendReport(uint8_t id, const void* data, int len)
 {
     while (!_done);
     _done = false;
+    tud_remote_wakeup(); // Ignore return value
     return tud_hid_report(id, data, len);
 }
 
